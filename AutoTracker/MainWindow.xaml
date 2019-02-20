@@ -1,0 +1,24 @@
+﻿<Window x:Class="AutoTracker.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AutoTracker"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="220" Width="320">
+    <Grid>
+        <Image HorizontalAlignment="Left" Height="50" Margin="10,70,0,0" VerticalAlignment="Top" Width="50" Source="images/morph.png" IsEnabled="{Binding morph}" Style="{StaticResource ImageEnabled}" Stretch="Fill"/>
+        <Image HorizontalAlignment="Left" Height="50" Margin="70,70,0,0" VerticalAlignment="Top" Width="50" Source="images/bomb.png" IsEnabled="{Binding bomb}" Style="{StaticResource ImageEnabled}" Stretch="Fill"/>
+        <Image HorizontalAlignment="Left" Height="50" Margin="130,70,0,0" VerticalAlignment="Top" Width="50" Source="images/varia.png" IsEnabled="{Binding varia}" Style="{StaticResource ImageEnabled}" Stretch="Fill"/>
+        <Image HorizontalAlignment="Left" Height="50" Margin="190,70,0,0" VerticalAlignment="Top" Width="50" Source="images/screw.png" IsEnabled="{Binding screw}" Style="{StaticResource ImageEnabled}" Stretch="Fill"/>
+        <Image HorizontalAlignment="Left" Height="50" Margin="250,70,0,0" VerticalAlignment="Top" Width="50" Source="images/space.png" IsEnabled="{Binding space}" Style="{StaticResource ImageEnabled}" Stretch="Fill"/>
+        <Image HorizontalAlignment="Left" Height="50" Margin="190,130,0,0" VerticalAlignment="Top" Width="50" Source="images/hjb.png" IsEnabled="{Binding hjb}" Style="{StaticResource ImageEnabled}" Stretch="Fill"/>
+        <Image HorizontalAlignment="Left" Height="50" Margin="130,130,0,0" VerticalAlignment="Top" Width="50" Source="images/speed.png" IsEnabled="{Binding speed}" Style="{StaticResource ImageEnabled}" Stretch="Fill"/>
+        <Image HorizontalAlignment="Left" Height="50" Margin="70,130,0,0" VerticalAlignment="Top" Width="50" Source="images/spring.png" IsEnabled="{Binding spring}" Style="{StaticResource ImageEnabled}" Stretch="Fill"/>
+        <Image HorizontalAlignment="Left" Height="50" Margin="10,10,0,0" VerticalAlignment="Top" Width="50" Source="images/charge.png" IsEnabled="{Binding charge}" Style="{StaticResource ImageEnabled}" Stretch="Fill"/>
+        <Image HorizontalAlignment="Left" Height="50" Margin="70,10,0,0" VerticalAlignment="Top" Width="50" Source="images/spazer.png" IsEnabled="{Binding spazer}" Style="{StaticResource ImageEnabled}" Stretch="Fill"/>
+        <Image HorizontalAlignment="Left" Height="50" Margin="130,10,0,0" VerticalAlignment="Top" Width="50" Source="images/wave.png" IsEnabled="{Binding wave}" Style="{StaticResource ImageEnabled}" Stretch="Fill"/>
+        <Image HorizontalAlignment="Left" Height="50" Margin="190,10,0,0" VerticalAlignment="Top" Width="50" Source="images/ice.png" IsEnabled="{Binding ice}" Style="{StaticResource ImageEnabled}" Stretch="Fill"/>
+        <Image HorizontalAlignment="Left" Height="50" Margin="250,10,0,0" VerticalAlignment="Top" Width="50" Source="images/plasma.png" IsEnabled="{Binding plasma}" Style="{StaticResource ImageEnabled}" Stretch="Fill"/>
+    </Grid>
+</Window>
