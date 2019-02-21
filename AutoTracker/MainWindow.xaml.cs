@@ -32,15 +32,24 @@ namespace AutoTracker
             InitializeComponent();
             ThreadStart method = new ThreadStart(dataUpdater);
             Thread updater = new Thread(method);
+            updater.IsBackground = true;
             updater.Start();
         }
         private void dataUpdater()
         {
             memAccess = new MemoryReader();
-            byte[] buffer = new byte[2];
+            byte[] buffer = new byte[16];
             while (true)
             {
-                int check = memAccess.getBytes(0x09A4, buffer, 2);
+                int check = 0;
+                try
+                {
+                    check = memAccess.getBytes(0x09A4, buffer, 2);
+                }
+                catch(Exception e)
+                {
+                    memAccess.init();
+                }
                 if (check == 2)
                 {
                     tracked.varia = (buffer[0] & 0x1) != 0;
@@ -53,7 +62,14 @@ namespace AutoTracker
                     tracked.bomb = (buffer[1] & 0x10) != 0;
                     tracked.speed = (buffer[1] & 0x20) != 0;
                 }
-                check = memAccess.getBytes(0x09A8, buffer, 2);
+                try
+                {
+                    check = memAccess.getBytes(0x09A8, buffer, 2);
+                }
+                catch(Exception e)
+                {
+                    memAccess.init();
+                }
                 if (check == 2)
                 {
                     tracked.wave = (buffer[0] & 0x1) != 0;
@@ -62,7 +78,49 @@ namespace AutoTracker
                     tracked.plasma = (buffer[0] & 0x8) != 0;
                     tracked.charge = (buffer[1] & 0x10) != 0;
                 }
-                Thread.Sleep(1000);
+                try {
+                    check = memAccess.getBytes(0x9C4, buffer, 2);
+                }
+                catch(Exception e)
+                {
+                    memAccess.init();
+                }
+                if(check == 2)
+                {
+                    if((buffer[0] + buffer[1]*256) % 100 != 99)
+                    {
+                        memAccess.init();
+                    }
+                }
+                try
+                {
+                    check = memAccess.getBytes(0xD829, buffer, 6);
+                }
+                catch
+                {
+                    memAccess.init();
+                }
+                if(check == 6)
+                {
+                    tracked.kraid = (buffer[0] & 0x1) == 0;
+                    tracked.ridley = (buffer[1] & 0x1) == 0;
+                    tracked.croc = (buffer[1] & 0x2) != 0;
+                    tracked.phantoon = (buffer[2] & 0x1) == 0;
+                    tracked.draygon = (buffer[3] & 0x1) == 0;
+                }
+                try
+                {
+                    check = memAccess.getBytes(0xD821, buffer, 1);
+                }
+                catch
+                {
+                    memAccess.init();
+                }
+                if(check == 1)
+                {
+                    tracked.shak = (buffer[0] & 0x20) != 0;
+                }
+                Thread.Sleep(17);
             }
         }
     }
@@ -162,7 +220,43 @@ namespace AutoTracker
         public bool plasma
         {
             get { return this._plasma; }
-            set { Set(value, ref this._charge, "plasma"); }
+            set { Set(value, ref this._plasma, "plasma"); }
+        }
+        private bool _kraid;
+        public bool kraid
+        {
+            get { return this._kraid; }
+            set { Set(value, ref this._kraid, "kraid"); }
+        }
+        private bool _draygon;
+        public bool draygon
+        {
+            get { return this._draygon; }
+            set { Set(value, ref this._draygon, "draygon"); }
+        }
+        private bool _phantoon;
+        public bool phantoon
+        {
+            get { return this._phantoon; }
+            set { Set(value, ref this._phantoon, "phantoon"); }
+        }
+        private bool _ridley;
+        public bool ridley
+        {
+            get { return this._ridley; }
+            set { Set(value, ref this._ridley, "ridley"); }
+        }
+        private bool _croc;
+        public bool croc
+        {
+            get { return this._croc; }
+            set { Set(value, ref this._croc, "croc"); }
+        }
+        private bool _shak;
+        public bool shak
+        {
+            get { return this._shak; }
+            set { Set(value, ref this._shak, "shak"); }
         }
         public event PropertyChangedEventHandler PropertyChanged;
         private void RaisePropertyChanged(string propertyName)

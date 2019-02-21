@@ -34,6 +34,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>AutoTracker.App</StartupObject>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -133,6 +136,15 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="images\spring.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\croc.png" />
+    <Resource Include="images\draygon.png" />
+    <Resource Include="images\grav.png" />
+    <Resource Include="images\kraid.png" />
+    <Resource Include="images\phantoon.png" />
+    <Resource Include="images\ridley.png" />
+    <Resource Include="images\shak.gif" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
