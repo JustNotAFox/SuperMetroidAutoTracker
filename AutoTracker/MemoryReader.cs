@@ -83,18 +83,6 @@ namespace AutoTracker
             return versions[proc.ProcessName][proc.MainModule.ModuleMemorySize];
         }
 
-        static void PrintYN(bool yes)
-        {
-            if(yes)
-            {
-                Console.WriteLine("Yes");
-            }
-            else
-            {
-                Console.WriteLine("No");
-            }
-        }
-
         public int getBytes(int offset, byte[] buffer, int size)
         {
             if(this.process.HasExited)

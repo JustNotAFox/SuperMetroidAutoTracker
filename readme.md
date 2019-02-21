@@ -1,7 +1,8 @@
 Super Metroid Auto Tracker
 
 Currently supported emulators:
-snes-9x-x64 version 1.54
+snes-9x versions: 1.52-rr, 1.53, 1.54, 1.54-rr, 1.56, 1.56.1, 1.56.2
+snes-9x-x64 versions: 1.53, 1.54, 1.55, 1.56, 1.56.1, 1.56.2
 
 Currently tracks first two bytes of item status and Samus' (current) health in a console output.
 
