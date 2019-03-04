@@ -35,6 +35,12 @@ namespace AutoTracker
             updater.IsBackground = true;
             updater.Start();
         }
+
+        private void reconnect(object sender, RoutedEventArgs e)
+        {
+            memAccess.init();
+        }
+
         private void dataUpdater()
         {
             memAccess = new MemoryReader();
@@ -42,14 +48,7 @@ namespace AutoTracker
             while (true)
             {
                 int check = 0;
-                try
-                {
-                    check = memAccess.getBytes(0x09A4, buffer, 2);
-                }
-                catch(Exception e)
-                {
-                    memAccess.init();
-                }
+                check = memAccess.getBytes(0x09A4, buffer, 2);
                 if (check == 2)
                 {
                     tracked.varia = (buffer[0] & 0x1) != 0;
@@ -62,14 +61,7 @@ namespace AutoTracker
                     tracked.bomb = (buffer[1] & 0x10) != 0;
                     tracked.speed = (buffer[1] & 0x20) != 0;
                 }
-                try
-                {
-                    check = memAccess.getBytes(0x09A8, buffer, 2);
-                }
-                catch(Exception e)
-                {
-                    memAccess.init();
-                }
+                check = memAccess.getBytes(0x09A8, buffer, 2);
                 if (check == 2)
                 {
                     tracked.wave = (buffer[0] & 0x1) != 0;
@@ -78,13 +70,7 @@ namespace AutoTracker
                     tracked.plasma = (buffer[0] & 0x8) != 0;
                     tracked.charge = (buffer[1] & 0x10) != 0;
                 }
-                try {
-                    check = memAccess.getBytes(0x9C4, buffer, 2);
-                }
-                catch(Exception e)
-                {
-                    memAccess.init();
-                }
+                check = memAccess.getBytes(0x9C4, buffer, 2);
                 if(check == 2)
                 {
                     if((buffer[0] + buffer[1]*256) % 100 != 99)
@@ -92,14 +78,7 @@ namespace AutoTracker
                         memAccess.init();
                     }
                 }
-                try
-                {
-                    check = memAccess.getBytes(0xD829, buffer, 6);
-                }
-                catch
-                {
-                    memAccess.init();
-                }
+                check = memAccess.getBytes(0xD829, buffer, 6);
                 if(check == 6)
                 {
                     tracked.kraid = (buffer[0] & 0x1) == 0;
@@ -108,20 +87,18 @@ namespace AutoTracker
                     tracked.phantoon = (buffer[2] & 0x1) == 0;
                     tracked.draygon = (buffer[3] & 0x1) == 0;
                 }
-                try
-                {
-                    check = memAccess.getBytes(0xD821, buffer, 1);
-                }
-                catch
-                {
-                    memAccess.init();
-                }
+                check = memAccess.getBytes(0xD821, buffer, 1);
                 if(check == 1)
                 {
                     tracked.shak = (buffer[0] & 0x20) != 0;
                 }
                 Thread.Sleep(17);
             }
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 

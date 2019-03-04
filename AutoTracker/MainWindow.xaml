@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AutoTracker"
         mc:Ignorable="d"
-        Title="Super Metroid Automatic Tracker" Height="280" Width="320">
+        Title="Super Metroid Automatic Tracker" Height="320" Width="320">
     <Grid Background="Black">
         <Image HorizontalAlignment="Left" Height="50" Margin="10,10,0,0" VerticalAlignment="Top" Width="50" Source="images/charge.png" IsEnabled="{Binding charge}" Style="{StaticResource ImageEnabled}" Stretch="Fill"/>
         <Image HorizontalAlignment="Left" Height="50" Margin="70,10,0,0" VerticalAlignment="Top" Width="50" Source="images/ice.png" IsEnabled="{Binding ice}" Style="{StaticResource ImageEnabled}" Stretch="Fill"/>
@@ -27,5 +27,7 @@
         <Image HorizontalAlignment="Left" Height="50" Margin="130,190,0,0" VerticalAlignment="Top" Width="50" Source="images/phantoon.png" IsEnabled="{Binding phantoon}" Style="{StaticResource ImageEnabled}" Stretch="Fill"/>
         <Image HorizontalAlignment="Left" Height="50" Margin="190,190,0,0" VerticalAlignment="Top" Width="50" Source="images/draygon.png" IsEnabled="{Binding draygon}" Style="{StaticResource ImageEnabled}" Stretch="Fill"/>
         <Image HorizontalAlignment="Left" Height="50" Margin="250,190,0,0" VerticalAlignment="Top" Width="50" Source="images/shak.gif" IsEnabled="{Binding shak}" Style="{StaticResource ImageEnabled}" Stretch="Fill"/>
+        <Button HorizontalAlignment="Center" Height="30" Margin="0,250,0,0" VerticalAlignment="Top" Width="200" Click="reconnect">Reconnect</Button>
+        <TextBox Text="{Binding hp}" />
     </Grid>
 </Window>
