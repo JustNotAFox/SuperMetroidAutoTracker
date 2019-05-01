@@ -36,10 +36,10 @@ namespace AutoTracker
             updater.Start();
         }
 
-        private void reconnect(object sender, RoutedEventArgs e)
+        /*private void reconnect(object sender, RoutedEventArgs e) //No longer used
         {
             memAccess.init();
-        }
+        }/**/
 
         private void dataUpdater()
         {
@@ -78,6 +78,10 @@ namespace AutoTracker
                         memAccess.init();
                     }
                 }
+                else
+                {
+                    memAccess.init();
+                }
                 check = memAccess.getBytes(0xD829, buffer, 6);
                 if(check == 6)
                 {
@@ -94,11 +98,6 @@ namespace AutoTracker
                 }
                 Thread.Sleep(17);
             }
-        }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-
         }
     }
 
@@ -243,8 +242,18 @@ namespace AutoTracker
                 this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
             }
         }
+        private string _title;
+        public string title
+        {
+            get { return this._title; }
+            set {
+                this._title = value;
+                RaisePropertyChanged("title");
+            }
+        }
         public Trackables()
         {
+            _title = "Super Metroid Automatic Tracker";
             _varia = false;
             _spring = false;
             _morph = false;

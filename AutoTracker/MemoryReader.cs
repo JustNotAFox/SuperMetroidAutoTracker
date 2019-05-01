@@ -39,6 +39,7 @@ namespace AutoTracker
         {
             { "snes9x", new Dictionary<int, Int64>()
                 {
+                    { 9715712, 0x71AECC }, //1.52?
                     { 10330112, 0x789414 }, //1.52-rr
                     { 7729152, 0x890EE4 }, //1.54-rr
                     { 5914624, 0x6EFBA4 }, //1.53
@@ -46,6 +47,7 @@ namespace AutoTracker
                     { 6602752, 0x762874 }, //1.55
                     { 6848512, 0x7811B4 }, //1.56.1
                     { 6856704, 0x78528C }, //1.56.2
+                    { 7241728, 0x79DACC }, //Multitroid 1.54
                     { 7258112, 0x79F5D4 } //Multitroid
                 }
             },
@@ -57,13 +59,16 @@ namespace AutoTracker
                     { 9003008, 0x1405D8C68 }, //1.56
                     { 8945664, 0x1405C80A8 }, //1.56.1
                     { 9015296, 0x1405D9298 }, //1.56.2
-                    { 9060352, 0x1405AE848 }  //1.58
+                    { 9048064, 0x1405ACC58}, //1.57
+                    { 9060352, 0x1405AE848 },  //1.58
+                    { 12836864, 0x1408D8BE8 }  //1.60
                 }
             },
             { "retroarch", new Dictionary<int, Int64>()
                 {
                     { 18649088, 0x608EF0 },
-                    { 15978496, 0x7A1200 }
+                    { 15978496, 0x7A1200 },
+                    { 19120128, 0x9FAB90 }
                 }
             }
         };
@@ -112,6 +117,10 @@ namespace AutoTracker
                 if(read)
                 {
                     return ret;
+                }
+                else
+                {
+                    this.init();
                 }
             }
             catch(Exception e)
